@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCARPE</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .item {
+            list-style-type: none;
+            display: inline-block;
+            margin-right: 10px;
+            padding: 0;
+        }
+        img{
+            width: 20%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>SCARPE</h1>
+    </header>
+    <div class="container-items">
+        {% for row in p %}
+        <ul class="item">
+            <li><img src="{{ url_for('static', filename='uploads/' + row.immagine) }}" /></li>
+            <li>{{ row.nome }}</li>
+            <li>{{ row.descrizione }}</li>
+            <li>{{ row.taglia }}</li>
+            <li>{{ row.prezzo }}</li>
+        </ul>
+        
+        {% endfor %}
+    </div>
+    </div>
+
+    <script>
+        const btnCart = document.querySelector('.container-icon')
+        const containerCartProducts = document.querySelector('.container-cart-products')
+
+        btnCart.addEventListener('click', () => {
+            containerCartProducts.classList.toggle('hidden-cart')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
+
+  <script>
+    function caricaTaglie() {
+      var categoria = document.getElementById('categoria').value;
+      var tagliaSelect = document.getElementById('taglia');
+      tagliaSelect.innerHTML = ''; // Svuota la select delle taglie
+
+      if (categoria == 'scarpe') {
+        for (var i = 32; i <= 50; i++) {
+          var option = document.createElement('option');
+          option.value = i;
+          option.text = i;
+          tagliaSelect.appendChild(option);
+        }
+      } else if (categoria == 'maglie' || categoria == 'felpe') {
+        var taglie = ['XS', 'S', 'M', 'L', 'XL'];
+        for (var j = 0; j < taglie.length; j++) {
+          var option = document.createElement('option');
+          option.value = taglie[j];
+          option.text = taglie[j];
+          tagliaSelect.appendChild(option);
+        }
+      }
+    }
+  </script>
+  <style>
+    .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.363);
+  border-radius: 1%;
+}
+.container label,
+.container input,
+.container select {
+  margin-bottom: 10px;
+}
+.container select{
+  width: 177px;
+}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="sell">
+      <a href="/vendi">Vendi</a>
+    </div>
+    <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#">Catalogo</a>
+          <div class="dropdown-content">
+            <a href="/maglie">Magliette</a>
+            <a href="/scarpe">Scarpe</a>
+            <a href="/felpe">Felpe</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="cart">
+      <a href="#">Carrello</a>
+    </div>
+  </header>
+  <div class="container">
+    
+    <form action="/venduto" method="post" enctype="multipart/form-data">
+
+      <label for="categoria">Categoria:</label><br>
+      <select name="categoria" id="categoria" onchange="caricaTaglie()">
+        <option value="">- seleziona la categoria -</option>
+        <option value="scarpe">Scarpe</option>
+        <option value="felpe">Felpe</option>
+        <option value="maglie">Maglie</option>
+      </select><br>
+
+      <label for="taglia">Taglia:</label><br>
+      <select name="taglia" id="taglia">
+        <option value="">- Seleziona una taglia -</option>
+      </select><br>
+
+      <label for="nome">Nome:</label><br>
+      <input type="text" id="nome" name="nome"><br>
+
+      <label for="descrizione">Descrizione:</label><br>
+      <input type="text" id="descrizione" name="descrizione"><br>
+
+      <label for="prezzo">Prezzo:</label><br>
+      <input type="text" id="prezzo" name="prezzo"><br>
+
+      <label for="immagine">Immagine:</label><br>
+      <input type="file" id="immagine" name="immagine"><br>
+
+      <input type="submit">
+    </form>
+  </div>
+</body>
+
+</html>

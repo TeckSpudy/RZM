@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>FELPE</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+    <style>
+*::after,
+*::before,
+*{
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato';
+    color: #333;
+    background-color: #000;
+   
+    background-image: url("/static/supreme.jpg");}
+
+header h1{
+    justify-content: center;
+    margin-top:20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.829);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+
+
+}
+
+
+/* Main */
+.container-items{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.item{
+    border-radius: 10px;
+    background-color: aliceblue;
+    margin: 30px;
+}
+
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+
+.item img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: all .5s;
+}
+
+.item figure{
+    overflow: hidden;
+}
+
+.item:hover img{
+    transform: scale(1.2);
+}
+
+.info-product{
+    padding: 15px 30px;
+
+}
+
+.info-product h2{
+    text-transform: uppercase;
+
+}
+
+.info-product p{
+    background-color: rgba(0, 0, 0, 0.095);
+    padding:15px;
+    border-radius: 10px ;
+
+}
+
+
+
+.info-product button{
+    padding: 15px 30px;
+    width: 100%;
+
+}
+
+
+.price{
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.info-product button{
+    border: none;
+    background: none;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+    </style>
+	<body>
+		<header>
+			<h1>Felpe</h1>
+		</header>
+		<div class="container-items">
+			<div class="item">
+				<figure>
+					<img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Nude project</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                         into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
+                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h3>Taglia:<select name="shoe-sizes" id="shoe-sizes">
+                        <option value="XXS">XXS</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select> </h3>                    
+                                     
+					<p class="price">$80</p>
+					<button>AGGIUNGI AL CARRELLO</button>
+				</div>
+			</div>
+            <div class="item">
+				<figure>
+					<img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Nude project</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                         into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
+                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h3>Taglia:<select name="shoe-sizes" id="shoe-sizes">
+                        <option value="XXS">XXS</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select> </h3>                    
+                                     
+					<p class="price">$80</p>
+					<button>AGGIUNGI AL CARRELLO</button>
+				</div>
+			</div>
+            <div class="item">
+				<figure>
+					<img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Nude project</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                         into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
+                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h3>Taglia:<select name="shoe-sizes" id="shoe-sizes">
+                        <option value="XXS">XXS</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select> </h3>                    
+                                     
+					<p class="price">$80</p>
+					<button>AGGIUNGI AL CARRELLO</button>
+				</div>
+			</div>
+            <div class="item">
+				<figure>
+					<img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Nude project</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                         into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
+                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h3>Taglia:<select name="shoe-sizes" id="shoe-sizes">
+                        <option value="XXS">XXS</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select> </h3>                    
+                                     
+					<p class="price">$80</p>
+					<button>AGGIUNGI AL CARRELLO</button>
+				</div>
+			</div>
+            <div class="item">
+				<figure>
+					<img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Nude project</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                         into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
+                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h3>Taglia:<select name="shoe-sizes" id="shoe-sizes">
+                        <option value="XXS">XXS</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select> </h3>                    
+                                     
+					<p class="price">$80</p>
+					<button>AGGIUNGI AL CARRELLO</button>
+				</div>
+			</div>
+            <div class="item">
+				<figure>
+					<img
+                        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Nude project</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
+                         into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release 
+                        of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <h3>Taglia:<select name="shoe-sizes" id="shoe-sizes">
+                        <option value="XXS">XXS</option>
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select> </h3>                    
+                                     
+					<p class="price">$80</p>
+					<button>AGGIUNGI AL CARRELLO</button>
+				</div>
+			</div>
+            
+		</div>
+
+        <script >
+            const btnCart = document.querySelector('.container-icon')
+const containerCartProducts = document.querySelector('.container-cart-products')
+
+btnCart.addEventListener('click', () => {
+    containerCartProducts.classList.toggle('hidden-cart')
+})
+        </script>
+	</body>
+</html>
