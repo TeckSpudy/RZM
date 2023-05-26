@@ -79,10 +79,9 @@ def maglie():
     cursore.execute("SELECT * FROM merce WHERE categoria = 'maglie'")
     posts = [dict(id=row[0], nome=row[1], descrizione=row[2], taglia=row[4], prezzo=row[5], immagine=row[6])for row in cursore.fetchall()]
     if len(posts) == 0:
-        return render_template("Azienda/visual.html", a="non ha funzionato")
+        return render_template("oops... non abbiamo prodotti disponibili :(")
     else:
         return render_template("rzm/scarpe.html", p=posts)
-    return render_template('rzm/scarpe.html')
 
 
 
@@ -98,7 +97,6 @@ def scarpe():
         return render_template("Azienda/visual.html", a="non ha funzionato")
     else:
         return render_template("rzm/scarpe.html", p=posts)
-    return render_template('rzm/scarpe.html')
 
 
 
@@ -113,7 +111,6 @@ def felpe():
         return render_template("Azienda/visual.html", a="non ha funzionato")
     else:
         return render_template("rzm/scarpe.html", p=posts)
-    return render_template('rzm/scarpe.html')
 
 @app.route('/vendi')
 def vendi():
@@ -141,6 +138,11 @@ def venduto():
     mysql.connection.commit()
     cursore.close()
     return "hai spaccato, <a href='/vendi'>Torna indietro</a>"
+
+@app.route('/dettaglio')
+def dettaglio():
+    
+    return render_template("rzm/prodottoDettaglio.html")
 
 
 
