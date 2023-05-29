@@ -1,6 +1,7 @@
-from flask import Flask,render_template, request, redirect, url_for
+from flask import Flask,render_template, request, redirect, url_for, session
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
+from flask_session import Session
 from flask_mysqldb import MySQL 
 import os
 import base64
@@ -9,7 +10,12 @@ UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
@@ -19,8 +25,14 @@ mysql = MySQL(app)
  
 @app.route('/')
 def accedi():
+
     return render_template('rzm/accedi.html')
 
+
+@app.route("/logout")
+def logout():
+    session["email"] = None
+    return redirect("/")
 
 
 
@@ -47,8 +59,12 @@ def data():
 def accesso():
     email = request.form['email']
     password = request.form['password']
+    session["email"] = email
 
     cursor=mysql.connection.cursor()
+    query = 'SELECT nome FROM utenti WHERE email = %s AND password = %s'
+    cursor.execute(query, (email, password))
+    session["nome"] = cursor.fetchone()
 
 
     query = 'SELECT * FROM utenti WHERE email = %s AND password = %s'
@@ -68,7 +84,11 @@ def accesso():
 
 @app.route('/home')
 def home():
-    return render_template('rzm/home.html')
+    if not session.get("email"):
+        # if not there in the session then redirect to the login page
+        return redirect("/")
+    current_session = session.get("nome")
+    return render_template('rzm/home.html', current_session=current_session)
 
 
 
