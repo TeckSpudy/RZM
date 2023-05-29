@@ -162,3 +162,49 @@ nav ul li.dropdown .dropdown-content {
         opacity: 1;
     }
 }
+
+.sell a,
+nav ul li.dropdown a,
+.cart a {
+  position: relative;
+}
+
+.sell a:before,
+nav ul li.dropdown a:before,
+.cart a:before {
+  content: "";
+  position: absolute;
+  bottom: -6px; /* Distanza dal testo */
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #fff; /* Colore della linea */
+  visibility: hidden;
+  transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out; /* Aggiunta della transizione per il margine sinistro */
+}
+
+.sell a:hover:before,
+nav ul li.dropdown a:hover:before,
+.cart a:hover:before {
+  visibility: visible;
+  width: 100%;
+/* Distanza dal margine sinistro */
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.829);
+    padding: 30px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+  }
+  .social-icon a i {
+    color: #fff;
+    font-size: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: .5s ease;
+  }
+
+  .social-icon a:hover i {
+    transform: scale(1.2);
+  }

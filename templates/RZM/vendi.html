@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 
   <script>
     function caricaTaglie() {
@@ -34,27 +36,62 @@
   </script>
   <style>
     .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 3%;
 }
 form{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.363);
-  border-radius: 1%;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.763);
+  border-radius: 20px;
+  text-transform: uppercase;
+  color: white;
 }
 .container label,
 .container input,
 .container select {
-  margin-bottom: 10px;
+      text-transform: uppercase;
+      border-color: white;
 }
+
+input,
+    select {
+      align-items: center;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      background-color: rgb(34, 34, 34);
+      border-color: white;
+      color: white;
+    }
 .container select{
   width: 177px;
 }
+main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+
+    }
+
+    .background {
+      background-image: url("/static/img/bo.png");
+      background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: auto;
+  height: auto;
+    }
   </style>
 </head>
 
@@ -79,38 +116,56 @@ form{
       <a href="#">Carrello</a>
     </div>
   </header>
-  <div class="container">
+
+<div class="background">
+  <main>
+      <div class="container">
     
     <form action="/venduto" method="post" enctype="multipart/form-data">
 
-      <label for="categoria">Categoria:</label><br>
-      <select name="categoria" id="categoria" onchange="caricaTaglie()">
+      <label for="categoria">Categoria</label><br>
+      <select required name="categoria" id="categoria" onchange="caricaTaglie()">
         <option selected disabled value="">- seleziona la categoria -</option>
         <option value="scarpe">Scarpe</option>
         <option value="felpe">Felpe</option>
         <option value="maglie">Maglie</option>
       </select><br>
 
-      <label for="taglia">Taglia:</label><br>
-      <select name="taglia" id="taglia">
+      <label for="taglia">Taglia</label><br>
+      <select required name="taglia" id="taglia">
         <option value="">- Seleziona una taglia -</option>
       </select><br>
 
-      <label for="nome">Nome:</label><br>
-      <input type="text" id="nome" name="nome"><br>
+      <label for="nome">Nome</label><br>
+      <input required type="text" id="nome" name="nome"><br>
 
-      <label for="descrizione">Descrizione:</label><br>
+      <label for="descrizione">Descrizione</label><br>
       <input type="text" id="descrizione" name="descrizione"><br>
 
-      <label for="prezzo">Prezzo:</label><br>
-      <input type="text" id="prezzo" name="prezzo"><br>
+      <label for="prezzo">Prezzo</label><br>
+      <input required type="text" id="prezzo" name="prezzo"><br>
 
-      <label for="immagine">Immagine:</label><br>
-      <input type="file" id="immagine" name="immagine"><br>
+      <label for="immagine">Immagine</label><br>
+      <input required type="file" id="immagine" name="immagine"><br>
 
       <input type="submit">
     </form>
   </div>
+  </main>
+</div>  
+  
+
+
+
+  <footer>
+    <div class="social-icon">
+      <a href="#"><i class='bx bxl-facebook'></i></a>
+      <a href="#"><i class='bx bxl-twitter'></i></a>
+      <a href="#"><i class='bx bxl-youtube'></i></a>
+      <a href="#"><i class='bx bxl-instagram'></i></a>
+      <a href="#"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </footer>
 </body>
 
 </html>
