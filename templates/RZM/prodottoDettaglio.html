@@ -1,15 +1,12 @@
-
-
-
-
-  {% extends 'rzm/header.html' %}
+{% extends 'rzm/header.html' %}
 
 
 {% block content %}
 <style>
-  body{
+  body {
     background-color: white;
   }
+
   .product-container {
     display: flex;
     align-items: center;
@@ -20,10 +17,12 @@
   }
 
   .product-image {
-    flex: 10 10 auto; /* Regola la larghezza dell'immagine del prodotto */
+    flex: 10 10 auto;
+    /* Regola la larghezza dell'immagine del prodotto */
     margin-right: 20px;
   }
-  img{
+
+  img {
     width: 100%;
     height: auto;
   }
@@ -36,47 +35,53 @@
     background-color: white;
     padding: 30px;
     border-radius: 10px 10px 10px 10px;
-    width:640px ;
-   
+    width: 640px;
+
   }
 
-  .product-details h1,h2,button {
-    margin-top: 10px; 
+  .product-details h1,
+  h2,
+  button {
+    margin-top: 10px;
     background-color: rgba(0, 0, 0, 0.829);
     padding: 20px;
     border-radius: 10px 10px 10px 10px;
     color: white;
   }
 
-  button{
+  button {
     width: 100%;
     font-size: large;
     text-transform: uppercase;
   }
-
-
 </style>
 <script>
-  function passaVariabile(id) {
-      var variabile = id;
-      var url = "/dettaglio?variabile=" + encodeURIComponent(variabile);
-      window.location.href = url;
+  function passaVariabile(id, nome, descrizione, taglia, prezzo) {
+    var variabile = id;
+    var Nome = nome;
+    var Descrizione = descrizione;
+    var Taglia = taglia;
+    var Prezzo = prezzo;
+    var url = "/aggiuntaCarrello?variabile=" + encodeURIComponent(variabile) + "&Nome=" + encodeURIComponent(Nome) + "&Descrizione=" + encodeURIComponent(Descrizione) + "&Taglia=" + encodeURIComponent(Taglia) + "&Prezzo=" + encodeURIComponent(Prezzo);
+    window.location.href = url;
   }
 </script>
-  {% for row in p %}
-  <div class="product-container">
-    <div class="product-image">
-      <img src="{{ url_for('static', filename='uploads/' + row.immagine) }}" />
-    </div>
-    <div class="product-details">
-      <h1>{{ row.nome }}</h1>
-      <h2>{{ row.descrizione }}</h2>
-      <h2>{{ row.taglia }}</h2>
-      <h2>{{ row.prezzo }}$</h2>
+{% for row in p %}
+<div class="product-container">
+  <div class="product-image">
+    <img src="{{ url_for('static', filename='uploads/' + row.immagine) }}" />
+  </div>
+  <div class="product-details">
+    <h1>{{ row.nome }}</h1>
+    <h2>{{ row.descrizione }}</h2>
+    <h2>{{ row.taglia }}</h2>
+    <h2>{{ row.prezzo }}$</h2>
     <div class="button">
-      <button onclick="passaVariabile('{{row.id}}')">Compra</button>
+      <button
+        onclick="passaVariabile('{{ row.id }}', '{{ row.nome }}', '{{ row.descrizione }}', '{{ row.taglia }}', '{{ row.prezzo }}')">Aggiungi
+        al carrello</button>
     </div>
   </div>
-  </div>
-  {% endfor %}
+</div>
+{% endfor %}
 {% endblock %}

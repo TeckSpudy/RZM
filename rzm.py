@@ -204,7 +204,27 @@ def dettaglio():
     current_session = session.get("nome")
     return render_template('rzm/prodottoDettaglio.html', current_session=current_session, p=posts)
 
+@app.route('/aggiuntaCarrello', methods=['GET'])
+def aggiuntaCarrello():
+    id = request.args.get('variabile')
+    nome = request.args.get('Nome')
+    descrizione = request.args.get('Descrizione')
+    taglia = request.args.get('Taglia')
+    prezzo = request.args.get('Prezzo')
 
+    cursore=mysql.connection.cursor()
+    cursore.execute("INSERT INTO carrello (idCompratore, id, Nome, Descrizione, Taglia, Prezzo) VALUES ('" + session.get("email") + "', '" + id + "', '" + nome + "', '" + descrizione + "', '" + taglia + "', '" + prezzo + "')")
+    mysql.connection.commit()
+    cursore.close()
+    return redirect("/carrello")
+
+@app.route('/carrello')
+def carrello():
+    cursore = mysql.connection.cursor()
+    cursore.execute("SELECT * FROM carrello WHERE idCompratore = '" + session.get("email") + "'")
+    posts = [dict(nome=row[2], descrizione=row[3], taglia=row[4], prezzo=row[5])for row in cursore.fetchall()]
+    return render_template('rzm/carrello.html', p=posts)
+    
 
 
 
