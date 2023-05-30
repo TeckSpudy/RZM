@@ -1,23 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
-  <title>Document</title>
-</head>
 
-<body>
+
+
+  {% extends 'rzm/header.html' %}
+
+
+{% block content %}
+<style>
+  body{
+    background-color: white;
+  }
+  .product-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 40px;
+    background-color: rgba(0, 0, 0, 0.829);
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .product-image {
+    flex: 10 10 auto; /* Regola la larghezza dell'immagine del prodotto */
+    margin-right: 20px;
+  }
+  img{
+    width: 100%;
+    height: auto;
+  }
+
+  .product-details {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px 10px 10px 10px;
+    width:640px ;
+   
+  }
+
+  .product-details h1,h2,button {
+    margin-top: 10px; 
+    background-color: rgba(0, 0, 0, 0.829);
+    padding: 20px;
+    border-radius: 10px 10px 10px 10px;
+    color: white;
+  }
+
+  button{
+    width: 100%;
+    font-size: large;
+    text-transform: uppercase;
+  }
+
+
+</style>
+<script>
+  function passaVariabile(id) {
+      var variabile = id;
+      var url = "/dettaglio?variabile=" + encodeURIComponent(variabile);
+      window.location.href = url;
+  }
+</script>
   {% for row in p %}
-  <h1>{{ row.nome }}</h1>
-  <img src="{{ url_for('static', filename='uploads/' + row.immagine) }}" />
-  <h2>{{ row.descrizione }}</h2>
-  <h2>{{ row.taglia }}</h2>
-  <h2>{{ row.prezzo }}$</h2>
+  <div class="product-container">
+    <div class="product-image">
+      <img src="{{ url_for('static', filename='uploads/' + row.immagine) }}" />
+    </div>
+    <div class="product-details">
+      <h1>{{ row.nome }}</h1>
+      <h2>{{ row.descrizione }}</h2>
+      <h2>{{ row.taglia }}</h2>
+      <h2>{{ row.prezzo }}$</h2>
+    <div class="button">
+      <button onclick="passaVariabile('{{row.id}}')">Compra</button>
+    </div>
+  </div>
+  </div>
   {% endfor %}
-  <button>Compra</button>
-</body>
-
-</html>
+{% endblock %}

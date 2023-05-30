@@ -25,6 +25,13 @@ app.config['MYSQL_DB'] = 'rzm'
 
 mysql = MySQL(app)
  
+
+@app.route('/prova')
+def prova():
+
+    return render_template('rzm/prova.html')
+
+
 @app.route('/')
 def accedi():
 
@@ -57,7 +64,8 @@ def data():
     cursore.execute("INSERT INTO utenti VALUES ('"+emailform+"' , '"+nomeform+"' , '"+cognomeform+"' , '"+pwdform+"')")
     mysql.connection.commit()
     cursore.close()
-    return render_template('rzm/avviso.html')
+    flash('La registrazione è avvenuta con successo!!!', 'success')
+    return redirect(url_for('accedi'))
 
 
 
@@ -109,8 +117,8 @@ def maglie():
     if len(posts) == 0:
         return render_template("oops... non abbiamo prodotti disponibili :(")
     else:
-        return render_template("rzm/scarpe.html", p=posts)
-
+        current_session = session.get("nome")
+        return render_template('rzm/scarpe.html', current_session=current_session, p=posts)
 
 
 
@@ -127,7 +135,8 @@ def scarpe():
     if len(posts) == 0:
         return render_template("Azienda/visual.html", a="non ha funzionato")
     else:
-        return render_template("rzm/scarpe.html", p=posts)
+        current_session = session.get("nome")
+        return render_template('rzm/scarpe.html', current_session=current_session, p=posts)
 
 
 
@@ -141,7 +150,8 @@ def felpe():
     if len(posts) == 0:
         return render_template("Azienda/visual.html", a="non ha funzionato")
     else:
-        return render_template("rzm/scarpe.html", p=posts)
+        current_session = session.get("nome")
+        return render_template('rzm/scarpe.html', current_session=current_session, p=posts)
 
 
 
@@ -151,7 +161,8 @@ def vendi():
     if not session.get("email"):
         # if not there in the session then redirect to the login page
         return redirect("/")
-    return render_template('rzm/vendi.html')
+    current_session = session.get("nome")
+    return render_template('rzm/vendi.html', current_session=current_session)
 
 
 
@@ -190,7 +201,8 @@ def dettaglio():
     cursore = mysql.connection.cursor()
     cursore.execute("SELECT * FROM merce WHERE ID = '" + id + "'")
     posts = [dict(id=row[0], nome=row[1], descrizione=row[2], taglia=row[4], prezzo=row[5], immagine=row[6])for row in cursore.fetchall()]
-    return render_template("rzm/prodottoDettaglio.html", p=posts)
+    current_session = session.get("nome")
+    return render_template('rzm/prodottoDettaglio.html', current_session=current_session, p=posts)
 
 
 

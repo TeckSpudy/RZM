@@ -202,6 +202,12 @@ body{
 .create-account p a:hover{
     text-decoration: underline;
 }
+.allert{
+      font-size: 15px;
+      color: green;
+      width: 80%;
+      text-align: center;
+}
 </style>
 
 <body>
@@ -244,6 +250,15 @@ body{
                     <div class="create-account">
                         <p>Crea un nuovo account? <a href="#" class="register-link">Registrati</a></p>
                     </div>
+                    <center>
+                        <div class="allert">{% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                              <div class="alert alert-success">
+                                {{ messages[0] }}
+                              </div>
+                            {% endif %}
+                          {% endwith %}</div>
+                    </center>
                 </form>
             </div>
 
@@ -277,6 +292,7 @@ body{
                     <button class="btn">Registrati</button>
                     <div class="create-account">
                         <p>Hai gia un'account? <a href="#" class="login-link">Accedi</a></p>
+                        
                     </div>
                 </form>
 

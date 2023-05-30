@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  {% extends 'rzm/header.html' %}
 
+
+  {% block content %} 
 
   <script>
     function caricaTaglie() {
@@ -40,7 +34,6 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 3%;
 }
 form{
   display: flex;
@@ -80,7 +73,7 @@ main {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 5%;
 
     }
 
@@ -93,36 +86,13 @@ main {
   height: auto;
     }
 
-    .allert{
+.allert{
       font-size: 10px;
       color: greenyellow;
       width: 80%;
       text-align: center;
     }
   </style>
-</head>
-
-<body>
-  <header>
-    <div class="sell">
-      <a href="/vendi">Vendi</a>
-    </div>
-    <nav>
-      <ul>
-        <li class="dropdown">
-          <a href="/home">Catalogo</a>
-          <div class="dropdown-content">
-            <a href="/maglie">Magliette</a>
-            <a href="/scarpe">Scarpe</a>
-            <a href="/felpe">Felpe</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-    <div class="cart">
-      <a href="#">Carrello</a>
-    </div>
-  </header>
 
 <div class="background">
   <main>
@@ -166,21 +136,6 @@ main {
     </form>
   </div>
   </main>
-</div>  
+</div>
+{% endblock %}  
 
-  
-
-
-
-  <footer>
-    <div class="social-icon">
-      <a href="#"><i class='bx bxl-facebook'></i></a>
-      <a href="#"><i class='bx bxl-twitter'></i></a>
-      <a href="#"><i class='bx bxl-youtube'></i></a>
-      <a href="#"><i class='bx bxl-instagram'></i></a>
-      <a href="#"><i class='bx bxl-linkedin'></i></a>
-    </div>
-  </footer>
-</body>
-
-</html>
