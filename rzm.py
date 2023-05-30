@@ -5,6 +5,8 @@ from flask_session import Session
 from flask_mysqldb import MySQL 
 import os
 import base64
+from flask import Flask, render_template, request, flash, redirect, url_for
+
 
 UPLOAD_FOLDER = './static/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -29,10 +31,16 @@ def accedi():
     return render_template('rzm/accedi.html')
 
 
+
+
+
 @app.route("/logout")
 def logout():
     session["email"] = None
     return redirect("/")
+
+
+
 
 
 
@@ -49,7 +57,7 @@ def data():
     cursore.execute("INSERT INTO utenti VALUES ('"+emailform+"' , '"+nomeform+"' , '"+cognomeform+"' , '"+pwdform+"')")
     mysql.connection.commit()
     cursore.close()
-    return render_template('es7-scuola/Dati2.html')
+    return render_template('rzm/avviso.html')
 
 
 
@@ -64,7 +72,7 @@ def accesso():
     cursor=mysql.connection.cursor()
     query = 'SELECT nome FROM utenti WHERE email = %s AND password = %s'
     cursor.execute(query, (email, password))
-    session["nome"] = cursor.fetchone()
+    session["nome"] = cursor.fetchone()[0 ]
 
 
     query = 'SELECT * FROM utenti WHERE email = %s AND password = %s'
@@ -110,6 +118,9 @@ def maglie():
 # App route per Scarpe
 @app.route('/scarpe')
 def scarpe():
+    if not session.get("email"):
+        # if not there in the session then redirect to the login page
+        return redirect("/")
     cursore = mysql.connection.cursor()
     cursore.execute("SELECT * FROM merce WHERE categoria = 'scarpe'")
     posts = [dict(id=row[0], nome=row[1], descrizione=row[2], taglia=row[4], prezzo=row[5], immagine=row[6])for row in cursore.fetchall()]
@@ -132,9 +143,17 @@ def felpe():
     else:
         return render_template("rzm/scarpe.html", p=posts)
 
+
+
+
 @app.route('/vendi')
 def vendi():
+    if not session.get("email"):
+        # if not there in the session then redirect to the login page
+        return redirect("/")
     return render_template('rzm/vendi.html')
+
+
 
 
 
@@ -157,12 +176,23 @@ def venduto():
     cursore.execute("INSERT INTO merce (nome, descrizione, categoria, taglia, prezzo, immagine) VALUES ('" + nome + "', '" + descrizione + "', '" + categoria + "', '" + taglia + "', '" + prezzo + "', '" + filename + "')")
     mysql.connection.commit()
     cursore.close()
-    return "hai spaccato, <a href='/vendi'>Torna indietro</a>"
-
-@app.route('/dettaglio')
-def dettaglio():
+    flash('Il prodotto è stato messo in vendita con successo!!!', 'success')
+    return redirect(url_for('vendi'))
     
-    return render_template("rzm/prodottoDettaglio.html")
+
+
+
+
+
+@app.route('/dettaglio', methods=['GET'])
+def dettaglio():
+    id = request.args.get('variabile')
+    cursore = mysql.connection.cursor()
+    cursore.execute("SELECT * FROM merce WHERE ID = '" + id + "'")
+    posts = [dict(id=row[0], nome=row[1], descrizione=row[2], taglia=row[4], prezzo=row[5], immagine=row[6])for row in cursore.fetchall()]
+    return render_template("rzm/prodottoDettaglio.html", p=posts)
+
+
 
 
 

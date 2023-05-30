@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='header.css') }}" />
+  <title>Document</title>
 </head>
+
 <body>
-    <header>
-        <div class="sell">
-          <a href="/vendi">Vendi</a>
-        </div>
-        <nav>
-          <ul>
-            <li class="dropdown">
-              <a href="/home">Catalogo</a>
-              <div class="dropdown-content">
-                <a href="/maglie">Magliette</a>
-                <a href="/scarpe">Scarpe</a>
-                <a href="/felpe">Felpe</a>
-              </div>
-            </li>
-          </ul>
-        </nav>
-        <div class="cart">
-          <a href="#">Carrello</a>
-        </div>
-      </header>
+  {% for row in p %}
+  <h1>{{ row.nome }}</h1>
+  <img src="{{ url_for('static', filename='uploads/' + row.immagine) }}" />
+  <h2>{{ row.descrizione }}</h2>
+  <h2>{{ row.taglia }}</h2>
+  <h2>{{ row.prezzo }}$</h2>
+  {% endfor %}
+  <button>Compra</button>
 </body>
+
 </html>

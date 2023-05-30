@@ -1,418 +1,128 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>HOME</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.829);
-      padding: 30px;
-
-    }
-
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-
-
-    }
-
-    nav li {
-      margin: 0 10px;
-    }
-
-
-    nav ul li a {
-      text-decoration: none;
-      color: rgb(255, 255, 255);
-      text-transform: uppercase;
-    }
-
-    
-    nav .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.829);
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    nav .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    nav .dropdown-content a {
-      color: rgb(255, 255, 255);
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-    }
-
-    nav .dropdown-content a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    nav ul li.dropdown .dropdown-content {
-  left: 50%;
-  transform: translateX(-60%);
-}
-
-    .cart {
-      margin-left: auto;
-
-    }
-
-    .cart a::after {
-      content: '';
-      height: 3px;
-      width: 0;
-      background: #009688;
-      transition: 0, 5s;
-    }
-
-    .cart :hover::after {
-      width: 100%;
-    }
-
-    .cart a {
-      text-decoration: none;
-      color: rgb(255, 255, 255);
-      text-transform: uppercase;
-    }
-
-    .sell {
-      margin-right: auto;
-    }
-
-    .sell a {
-      text-decoration: none;
-      color: rgb(255, 255, 255);
-      text-transform: uppercase;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    
-    }
-
-    .flex-container {
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
-
-    footer {
-      background-color: rgba(0, 0, 0, 0.829);
-      padding: 30px;
-      text-align: center;
-      color: rgb(255, 255, 255);
-    }
-
-
-    .titolo h1 {
-      font-family: italic;
-      font-size: 70px;
-      -webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-      animation: scale-up-center 1s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-      text-align: center;
-      margin:10px;
-
-    }
-
-    .sigla p{
-      font-family:'Times New Roman', Times, serif;
-      -webkit-animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-	        animation: tracking-in-contract-bck 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-
-    }
-
-
-
-    .social-icon a i {
-      color: #fff;
-      font-size: 24px;
-      margin-left: 10px;
-      cursor: pointer;
-      transition: .5s ease;
-    }
-
-    .social-icon a:hover i {
-      transform: scale(1.2);
-    }
-
-    .sell a,
-nav ul li.dropdown a,
-.cart a {
-  position: relative;
-}
-
-.sell a:before,
-nav ul li.dropdown a:before,
-.cart a:before {
-  content: "";
-  position: absolute;
-  bottom: -6px; /* Distanza dal testo */
-  left: 0;
-  width: 0;
-  height: 3px;
-  background-color: #fff; /* Colore della linea */
-  visibility: hidden;
-  transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out; /* Aggiunta della transizione per il margine sinistro */
-}
-
-.sell a:hover:before,
-nav ul li.dropdown a:hover:before,
-.cart a:hover:before {
-  visibility: visible;
-  width: 100%;
-/* Distanza dal margine sinistro */
-}
-
-.background{
-    background-image: url("/static/adamo.png") ;
-    background-position: center;
-    background-size:cover;
-    height: 100vh;
-    width: 100%;
-}
-
-    @-webkit-keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-@keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-
-
-
-
-@-webkit-keyframes tracking-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(400px);
-            transform: translateZ(400px);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
-@keyframes tracking-in-contract-bck {
-  0% {
-    letter-spacing: 1em;
-    -webkit-transform: translateZ(400px);
-            transform: translateZ(400px);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.6;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
-
-.container2 {
-            max-width: 400px;
-            background-color: black;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            margin-top: 0;
-            text-transform: uppercase;
-            color: white;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-transform: uppercase;
-            color: white;
-        }
-
-        label {
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            border-color: white;
-
-        }
-
-
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            text-align: center;
-            background-color: black;
-            border-color: white;
-            color: white;
-        }
-
-        input[type="submit"] {
-            background-color: white;
-            color: black;
-            cursor: pointer;
-        }
-
-  </style>
+  
 </head>
 
-<body>
-  <div class="container">
-    <header>
-      <div class="sell">
-        <a href="/vendi">Vendi</a>
-      </div>
-      <nav>
-        <ul>
-          <li class="dropdown">
-            <a href="#">Catalogo</a>
-            <div class="dropdown-content">
-              <a href="/maglie">Magliette</a>
-              <a href="/scarpe">Scarpe</a>
-              <a href="/felpe">Felpe</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
-      <div class="cart">
-        <a href="#">Carrello</a>
-      </div>
-    </header>
 
-    <div class="background">
-      <main>
-        <div class="container2">
-          <h1>Vendi</h1>
-  
-          <form action="/venduto" method="POST" enctype="multipart/form-data">
-              <label for="categoria">Categoria:</label>
-              <select id="categoria" name="categoria" onchange="mostraCampi()">
-                  <option value="scarpe">Scarpe</option>
-                  <option value="maglie">Maglie</option>
-                  <option value="felpe">Felpe</option>
-              </select>
-  
-              <label for="nome">Nome:</label>
-              <input type="text" id="nome" name="nome">
-  
-              <label for="descrizione">Descrizione:</label>
-              <input type="text" id="descrizione" name="descrizione">
-  
-              <div id="tagliaContainer">
-                  <label for="taglia">Taglia:</label>
-                  <select id="taglia" name="taglia"></select>
-              </div>
-  
-              <label for="prezzo">Prezzo:</label>
-              <input type="number" id="prezzo" name="prezzo">
-  
-              <label for="immagine">Immagine:</label>
-              <input type="file" id="immagine" name="immagine">
-  
-              <input type="submit" value="venduto">
-          </form>
-      </div>
-    </main>
+<style>
+  /* Reset CSS */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Styles for the header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+  }
+
+  /* Styles for the "Vendi" link */
+  .sell a {
+    color: black;
+    text-decoration: none;
+  }
+
+  /* Styles for the "Catalogo" dropdown */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Styles for the "Utente" dropdown */
+  .dropdown-contentu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .dropdownU:hover .dropdown-contentu {
+    display: block;
+  }
+
+  .dropdown-contentu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-contentu a:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+
+
+
+
+
+<body>
+  <header>
+    <div class="sell">
+      <a href="/vendi">Vendi</a>
+    </div>
+
+    <div class="centro">
+      <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#">Catalogo</a>
+          <div class="dropdown-content">
+            <a href="/maglie">Magliette</a>
+            <a href="/scarpe">Scarpe</a>
+            <a href="/felpe">Felpe</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
     </div>
     
-
-    <footer>
-      <div class="social-icon">
-        <a href="#"><i class='bx bxl-facebook'></i></a>
-        <a href="#"><i class='bx bxl-twitter'></i></a>
-        <a href="#"><i class='bx bxl-youtube'></i></a>
-        <a href="#"><i class='bx bxl-instagram'></i></a>
-        <a href="#"><i class='bx bxl-linkedin'></i></a>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    function mostraCampi() {
-        var categoria = document.getElementById("categoria").value;
-        var tagliaContainer = document.getElementById("tagliaContainer");
-
-        if (categoria === "scarpe") {
-            tagliaContainer.innerHTML = '<label for="taglia">Taglia:</label>' +
-                '<select id="taglia" name="taglia">' +
-                '<option value="36">36</option>' +
-                '<option value="37">37</option>' +
-                '<option value="38">38</option>' +
-                '<option value="39">39</option>' +
-                '<option value="40">40</option>' +
-                '<option value="41">41</option>' +
-                '<option value="42">42</option>' +
-                '<option value="43">43</option>' +
-                '<option value="44">44</option>' +
-                '<option value="45">45</option>' +
-                '</select>';
-        } else {
-            tagliaContainer.innerHTML = '<label for="taglia">Taglia:</label>' +
-                '<select id="taglia" name="taglia">' +
-                '<option value="xxs">XXS</option>' +
-                '<option value="xs">XS</option>' +
-                '<option value="s">S</option>' +
-                '<option value="m">M</option>' +
-                '<option value="l">L</option>' +
-                '<option value="xl">XL</option>' +
-                '<option value="xxl">XXL</option>' +
-                '</select>';
-        }
-    }
-</script>
+    <div class="utente">
+      <nav>
+      <ul>
+        <li class="dropdown">
+          <a href="#">{{ current_session }}</a>
+          <div class="dropdown-content">
+            <a href="/maglie">Prodotti comprati</a>
+            <a href="/scarpe">Prodotti venduti</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    </div>
+    
+  </header>
 </body>
-
 </html>

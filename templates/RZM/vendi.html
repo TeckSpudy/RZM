@@ -92,6 +92,13 @@ main {
   width: auto;
   height: auto;
     }
+
+    .allert{
+      font-size: 10px;
+      color: greenyellow;
+      width: 80%;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -149,10 +156,18 @@ main {
       <input required type="file" id="immagine" name="immagine"><br>
 
       <input type="submit">
+      <div class="allert">{% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-success">
+            {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}</div>
     </form>
   </div>
   </main>
 </div>  
+
   
 
 
