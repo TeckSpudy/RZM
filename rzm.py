@@ -216,11 +216,11 @@ def aggiuntaCarrello():
 
     # Aggiunta del prodotto al carrello
     cursore.execute("INSERT INTO carrello (idCompratore, id, Nome, Descrizione, Taglia, Prezzo) VALUES ('" + session.get("email") + "', '" + id + "', '" + nome + "', '" + descrizione + "', '" + taglia + "', '" + prezzo + "')")
-
+ 
     # Cancellazione del prodotto dalla tabella "merce"
     cursore.execute("DELETE FROM merce WHERE id = '" + id + "'")
 
-    cursore.execute("INSERT INTO venduto (idVenditore, id, Nome, Descrizione, Taglia, Prezzo) VALUES ('" + session.get("email") + "', '" + id + "', '" + nome + "', '" + descrizione + "', '" + taglia + "', '" + prezzo + "')")
+    #cursore.execute("INSERT INTO venduto (idVenditore, id, Nome, Descrizione, Taglia, Prezzo) VALUES ('" + session.get("email") + "', '" + id + "', '" + nome + "', '" + descrizione + "', '" + taglia + "', '" + prezzo + "')")
 
 
     mysql.connection.commit()

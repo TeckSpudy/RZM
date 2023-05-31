@@ -1,16 +1,74 @@
 {% extends 'rzm/header.html' %}
 
 {% block content %}
-{% for row in p %}
-<div class="product-container">
-  <div class="product-details">
-    <h1>{{ row.nome }}</h1>
-    <h2>{{ row.descrizione }}</h2>
-    <h2>{{ row.taglia }}</h2>
-    <h2>{{ row.prezzo }}$</h2>
-    <button>Compra</button>
-    </div>
-  </div>
+<style>
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 525px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 60px;
+    align-items: center;
+
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .product-container {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+  }
+
+  .product-details h1 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .product-details h2 {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+  }
+</style>
+<div class="main"> 
+  <table>
+    
+      <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Descrizione</th>
+        <th>Taglia</th>
+        <th>Prezzo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in p %}
+      <tr>
+        <td>{{ row.nome }}</td>
+        <td>{{ row.descrizione }}</td>
+        <td>{{ row.taglia }}</td>
+        <td>{{ row.prezzo }}$</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
-{% endfor %}
+  
 {% endblock %}
