@@ -1,0 +1,16 @@
+{% extends 'rzm/header.html' %}
+
+{% block content %}
+{% for row in p %}
+<div class="product-container">
+  <div class="product-details">
+    <h1>{{ row.nome }}</h1>
+    <h2>{{ row.descrizione }}</h2>
+    <h2>{{ row.taglia }}</h2>
+    <h2>{{ row.prezzo }}$</h2>
+    <button>Compra</button>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
