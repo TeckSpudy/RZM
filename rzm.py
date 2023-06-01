@@ -211,6 +211,7 @@ def aggiuntaCarrello():
     descrizione = request.args.get('Descrizione')
     taglia = request.args.get('Taglia')
     prezzo = request.args.get('Prezzo')
+    rating = request.args.get('rating')
 
     cursore = mysql.connection.cursor()
 
@@ -219,6 +220,9 @@ def aggiuntaCarrello():
  
     # Cancellazione del prodotto dalla tabella "merce"
     cursore.execute("DELETE FROM merce WHERE id = '" + id + "'")
+
+    cursore.execute("INSERT INTO recensione (id, valutazione, emailAcquirente) VALUES ('"  + id + "', '" + rating + "', '" + session.get("email") + "')")
+    
 
     #cursore.execute("INSERT INTO venduto (idVenditore, id, Nome, Descrizione, Taglia, Prezzo) VALUES ('" + session.get("email") + "', '" + id + "', '" + nome + "', '" + descrizione + "', '" + taglia + "', '" + prezzo + "')")
 

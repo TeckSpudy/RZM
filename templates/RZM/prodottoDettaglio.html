@@ -54,6 +54,48 @@
     font-size: large;
     text-transform: uppercase;
   }
+
+  .rate {
+    height: 46px;
+    padding: 0 10px;
+    margin-right: 35%;
+  }
+
+  .rate:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+  }
+
+  .rate:not(:checked)>label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+  }
+
+  .rate:not(:checked)>label:before {
+    content: '★ ';
+  }
+
+  .rate>input:checked~label {
+    color: #ffc700;
+  }
+
+  .rate:not(:checked)>label:hover,
+  .rate:not(:checked)>label:hover~label {
+    color: #deb217;
+  }
+
+  .rate>input:checked+label:hover,
+  .rate>input:checked+label:hover~label,
+  .rate>input:checked~label:hover,
+  .rate>input:checked~label:hover~label,
+  .rate>label:hover~input:checked~label {
+    color: #c59b08;
+  }
 </style>
 <script>
   function passaVariabile(id, nome, descrizione, taglia, prezzo) {
@@ -62,7 +104,9 @@
     var Descrizione = descrizione;
     var Taglia = taglia;
     var Prezzo = prezzo;
-    var url = "/aggiuntaCarrello?variabile=" + encodeURIComponent(variabile) + "&Nome=" + encodeURIComponent(Nome) + "&Descrizione=" + encodeURIComponent(Descrizione) + "&Taglia=" + encodeURIComponent(Taglia) + "&Prezzo=" + encodeURIComponent(Prezzo);
+    var rating = document.querySelector('input[name=rate]:checked').value
+
+    var url = "/aggiuntaCarrello?variabile=" + variabile + "&Nome=" + Nome + "&Descrizione=" + Descrizione + "&Taglia=" + Taglia + "&Prezzo=" + Prezzo + "&rating=" + rating;
     window.location.href = url;
   }
 </script>
@@ -76,6 +120,20 @@
     <h2>{{ row.descrizione }}</h2>
     <h2>{{ row.taglia }}</h2>
     <h2>{{ row.prezzo }}$</h2>
+    <center>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+    </center>
     <div class="button">
       <button
         onclick="passaVariabile('{{ row.id }}', '{{ row.nome }}', '{{ row.descrizione }}', '{{ row.taglia }}', '{{ row.prezzo }}')">Compra</button>

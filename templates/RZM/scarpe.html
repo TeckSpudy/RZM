@@ -87,16 +87,9 @@
 <script>
     function passaVariabile(id) {
         var variabile = id;
-        var url = "/dettaglio?variabile=" + encodeURIComponent(variabile);
+        var url = "/dettaglio?variabile=" + variabile;
         window.location.href = url;
     }
-
-    const btnCart = document.querySelector('.container-icon')
-    const containerCartProducts = document.querySelector('.container-cart-products')
-
-    btnCart.addEventListener('click', () => {
-        containerCartProducts.classList.toggle('hidden-cart')
-    })
 </script>
 <div class="container-items">
     {% for row in p %}
