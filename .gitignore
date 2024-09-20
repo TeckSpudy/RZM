@@ -1,0 +1,9 @@
+# Ignore Flask session data
+flask_session/
+
+# Ignore virtual environment
+Lib/
+rzmvenv/
+__pycache__/
+*.pyc
+*.pyo

@@ -4,25 +4,46 @@ from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from flask_session import Session
 from flask_mysqldb import MySQL 
+from flask import Flask, render_template, request, flash, redirect, url_for
+from DataBase.dbinit import initialize_database
 import os
 import base64
-from flask import Flask, render_template, request, flash, redirect, url_for
-#impostazione directory ed estensioni per le immagini
+import subprocess
+import sys
+
+def install_requirements():
+    # Check if requirements.txt exists
+    if os.path.exists('requirements.txt'):
+        try:
+            # Run pip install on the requirements.txt file
+            subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        except subprocess.CalledProcessError as e:
+            print(f"Error occurred while installing requirements: {e}")
+            sys.exit(1)
+    else:
+        print("requirements.txt not found!")
+
 UPLOAD_FOLDER = './static/uploads'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-#configurazione sessione
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-#configurazione DataBase RZM
+# MySQL configuration
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'rzm'
 mysql = MySQL(app)
+
+# Initialize the database within an application context
+with app.app_context():
+    try:
+        initialize_database(mysql, app.config['MYSQL_DB'], 'RZM.sql')
+    except Exception as e:
+        print(f"An error occurred while initializing the database: {e}")
+
 #
 #ROUTE
 #
@@ -185,8 +206,5 @@ def vendutop():
     return render_template('rzm/venduto.html', p=posts, current_session=current_session)
 ####config porta
 if __name__=="__main__":
+    initialize_database(mysql, app.config['MYSQL_DB'], 'RZM.sql')
     app.run(debug=True, port=5000)
-
-
-  
-
