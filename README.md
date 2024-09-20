@@ -25,8 +25,7 @@ cd yourproject
 
 ### 2. **Install Dependencies**
 
-Ensure all Python dependencies are installed. The project uses a `requirements.txt` file to list them:
-
+Ensure that all Python dependencies are installed. The program should install them automatically; if it doesn't, try to install them manually. The project utilizes a requirements.txt file to specify the dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -40,7 +39,7 @@ pip install -r requirements.txt
     ```
 2. Import the database dump (`RZM.sql`):
     ```bash
-    mysql -u root -p your_database_name < RZM.sql
+    mysql -u root -p your_database_name < DB/RZM.sql
     ```
 
 #### Option 2: Database Initialization via the Application
@@ -107,15 +106,7 @@ It's recommended to run the app inside a virtual environment to avoid conflicts 
 ### 1. **MySQL Error: Access Denied**
 Make sure your MySQL server is running and you have the correct credentials in your config.
 
-### 2. **MySQL Error: Data Too Long for Column 'immagine'**
-Ensure that the `immagine` column in the database has sufficient size (e.g., use `VARCHAR(255)`).
-
----
-
-## Contributions
-Explain how others can contribute to the project (optional).
-
 ---
 
 ## License
-Specify the license under which the project is released (e.g., MIT License).
+This project is completely open source software!

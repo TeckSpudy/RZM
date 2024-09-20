@@ -67,7 +67,7 @@ CREATE TABLE `merce` (
   `Categoria` varchar(30) DEFAULT NULL,
   `Taglia` varchar(10) NOT NULL,
   `prezzo` int(10) DEFAULT NULL,
-  `immagine` varchar(30) NOT NULL
+  `immagine` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
