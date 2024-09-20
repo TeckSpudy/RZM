@@ -2,7 +2,7 @@
 # RZM-Outlet Project
 
 ## Overview
-A brief description of what the web application does and its key features.
+This is a school project that I created with my classmates. It is a working flask webapp with a mysql database. It displays already existing merch (for sale) and the possibility to add new ones.
 
 ---
 
