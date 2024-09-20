@@ -19,8 +19,8 @@ Make sure the user has the necessary tools and software installed before running
 ### 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/yourusername/yourproject.git
-cd yourproject
+git clone https://github.com/TeckSpudy/RZM.git
+cd RZM
 ```
 
 ### 2. **Install Dependencies**
