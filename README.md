@@ -1,5 +1,5 @@
 
-# Project Name
+# RZM-Outlet Project
 
 ## Overview
 A brief description of what the web application does and its key features.
