@@ -5,7 +5,7 @@ from werkzeug.datastructures import  FileStorage
 from flask_session import Session
 from flask_mysqldb import MySQL 
 from flask import Flask, render_template, request, flash, redirect, url_for
-from DataBase.dbinit import initialize_database
+from DB.dbinit import initialize_database
 import os
 import base64
 import subprocess
